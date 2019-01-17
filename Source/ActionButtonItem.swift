@@ -41,6 +41,25 @@ open class ActionButtonItem: NSObject {
             self.label.text = newValue
         }
     }
+    
+    open var textFont: UIFont = UIFont(name: "HelveticaNeue-Medium", size: 13)! {
+        didSet {
+            label.font = textFont
+        }
+    }
+    
+    open var textColor: UIColor = .black {
+        didSet {
+            label.textColor = textColor
+        }
+    }
+    
+    open var textBackgroundColor: UIColor = .white {
+        didSet {
+            labelBackground.backgroundColor = textBackgroundColor
+        }
+    }
+    
     /// View that will hold the item's button and label
     internal var view: UIView!
     
@@ -54,10 +73,10 @@ open class ActionButtonItem: NSObject {
     fileprivate var image: UIImage!
     
     /// Size needed for the *view* property presente the item's content
-    fileprivate let viewSize = CGSize(width: 200, height: 35)
+    fileprivate let viewSize = CGSize(width: 200, height: 65)
     
     /// Button's size by default the button is 35x35
-    fileprivate let buttonSize = CGSize(width: 35, height: 35)
+    fileprivate let buttonSize = CGSize(width: 65, height: 65)
     
     fileprivate var labelBackground: UIView!
     fileprivate let backgroundInset = CGSize(width: 10, height: 10)
@@ -84,6 +103,7 @@ open class ActionButtonItem: NSObject {
 
         if let unwrappedImage = image {
             self.button.setImage(unwrappedImage, for: UIControl.State())
+            self.button.imageView?.contentMode = .scaleAspectFill
         }
                 
         if let text = optionalTitle , text.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty == false {
