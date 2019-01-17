@@ -183,7 +183,7 @@ open class ActionButton: NSObject {
     fileprivate func placeButtonItems() {
         if let optionalItems = self.items {
             for item in optionalItems {
-                item.view.center = CGPoint(x: self.floatButton.center.x - 83, y: self.floatButton.center.y)
+                item.view.center = CGPoint(x: self.floatButton.center.x - 70, y: self.floatButton.center.y)
                 item.view.removeFromSuperview()
                 
                 self.contentView.addSubview(item.view)
